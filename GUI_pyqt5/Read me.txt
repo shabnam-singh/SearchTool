@@ -1,0 +1,25 @@
+PS C:\Python34\Lib\site-packages\PyQt5> pyrcc5  "D:\Installed Programs\My Programs\Python\PyCharm\My Projects\Search Tool\data.qrc" -o data.py
+
+
+
+design using pyqt5 
+	if u use any resource file (.qrc) 
+	then u need to convert that file into py file
+	
+conversion process 
+	open pyrcc5 exe from directory of python 34 
+	use the above syntax
+	
+	pyrcc5 "directory of qrc file " -o "directory of pyfile"
+
+
+also convert ui file to py file for importing gui
+
+	pyuic5 -x example.ui -o example.py
+
+	
+
+ qrc py file import in example.py
+
+	a new file is needed for importing gui py file
+	

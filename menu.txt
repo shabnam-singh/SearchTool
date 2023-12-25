@@ -1,0 +1,18 @@
+mm=Menu(root)
+m_file=Menu(mm,tearoff=0)
+m_file.add_command(label='Save',command=save_into_pc)
+m_file.add_command(label='Quit',command=close)
+mm.add_cascade(label='File',menu=m_file)
+root.config(menu=mm)
+
+m_edit=Menu(mm,tearoff=0)
+m_edit.add_command(label='Reset Fields',command=reset_fields)
+mm.add_cascade(label='Edit',menu=m_edit)
+root.config(menu=mm)
+
+m_help=Menu(mm,tearoff=0)
+m_help.add_command(label='Contact Me',command=contact_me)
+m_help.add_command(label='About Tool ver 1.0',command=about_st)
+m_help.add_command(label='Check For Update',command=c_f_update)
+mm.add_cascade(label='Help',menu=m_help)
+root.config(menu=mm)

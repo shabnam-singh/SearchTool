@@ -1,0 +1,121 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+import wikipedia as w
+# from threading import Thread
+# import speech_recognition as sr
+# import webbrowser
+#class statring from here
+
+
+
+
+class Ui_MainWindow(object):
+
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(513, 577)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("D:/Installed Programs/My Programs/Python/PyCharm/My Projects/Search Tool/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
+        self.label = QtWidgets.QLabel(MainWindow)
+        self.label.setGeometry(QtCore.QRect(180, 20, 151, 161))
+        self.label.setObjectName("label")
+        self.search_box = QtWidgets.QLineEdit(MainWindow)
+        self.search_box.setGeometry(QtCore.QRect(100, 190, 301, 31))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.search_box.setFont(font)
+        self.search_box.setText("")
+        self.search_box.setObjectName("search_box")
+
+        self.search_btn_search = QtWidgets.QPushButton(MainWindow)
+        self.search_btn_search.clicked.connect(self.s_b)
+        self.search_btn_search.show()
+        self.search_btn_search.setGeometry(QtCore.QRect(180, 230, 62, 58))
+        self.search_btn_search.setText("")
+
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/newPrefix/sb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.search_btn_search.setIcon(icon1)
+        self.search_btn_search.setIconSize(QtCore.QSize(50, 50))
+        self.search_btn_search.setObjectName("search_btn_search")
+
+        self.search_btn_mic = QtWidgets.QPushButton(MainWindow)
+        self.search_btn_mic.setGeometry(QtCore.QRect(260, 230, 62, 58))
+        self.search_btn_mic.setText("")
+
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("D:/Installed Programs/My Programs/Python/PyCharm/My Projects/Search Tool/mic3.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.search_btn_mic.setIcon(icon2)
+        self.search_btn_mic.setIconSize(QtCore.QSize(50, 50))
+        self.search_btn_mic.setObjectName("search_btn_mic")
+        self.t = QtWidgets.QTextBrowser(MainWindow)
+
+        self.t.setGeometry(QtCore.QRect(80, 300, 421, 261))
+        self.t.setObjectName("t")
+        self.o_i_b = QtWidgets.QPushButton(MainWindow)
+        self.o_i_b.setGeometry(QtCore.QRect(10, 330, 62, 58))
+        self.o_i_b.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/newPrefix/open.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.o_i_b.setIcon(icon3)
+        self.o_i_b.setIconSize(QtCore.QSize(50, 50))
+        self.o_i_b.setObjectName("o_i_b")
+
+        self.b_c = QtWidgets.QPushButton(MainWindow)
+        self.b_c.setGeometry(QtCore.QRect(10, 400, 62, 58))
+        self.b_c.setText("")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/newPrefix/save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.b_c.setIcon(icon4)
+        self.b_c.setIconSize(QtCore.QSize(50, 50))
+        self.b_c.setObjectName("b_c")
+
+        self.b_pc = QtWidgets.QPushButton(MainWindow)
+        self.b_pc.setGeometry(QtCore.QRect(10, 470, 62, 58))
+        self.b_pc.setText("")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/newPrefix/reset.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.b_pc.setIcon(icon5)
+        self.b_pc.setIconSize(QtCore.QSize(50, 50))
+        self.b_pc.setObjectName("b_pc")
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "Search Tool Ver 1.0"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\":/newPrefix/top_image.png\"/></p></body></html>"))
+    def test(self):
+        print("inad")
+
+    def weki(self,dfs):
+        try:
+            result = str(w.summary(dfs))
+            self.t.setText(result)
+        except:
+            QtWidgets.QMessageBox('Connection Error','Your Search Did Not Match Any Document \n Make Sure Words Are Types Correctly \n Make Sure You Have Internet Connection')
+
+    def s_b(self):
+        a = self.search_box.text()
+        if a != '':
+            dfs = a
+            weki(self,dfs)
+        else:
+            QtWidgets.QMessageBox('Search Field Empty', 'Nothing to Search \n Search a valid Keyword')
+
+
+
+import data
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QDialog()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+

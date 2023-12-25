@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>sb.png</file>
+    <file>top_image.png</file>
+    <file>mic3.png</file>
+    <file>open.png</file>
+    <file>reset.png</file>
+    <file>save.png</file>
+    <file>top_image.png</file>
+  </qresource>
+</RCC>
